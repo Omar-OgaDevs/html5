@@ -1,0 +1,22 @@
+body{
+  background-color:slategray;
+  color:white;
+  width: 500px;
+  font-size:18px;
+}
+label{
+  display:block;
+}
+input:invalid{
+  border:3px solid #CC0000;
+}
+input:valid{
+  background-color:lightyellow;
+  border:3px solid #3399FF;
+}
+input:valid+.invalid{
+  visibility:hidden;
+}
+input:invalid+.invalid{
+  visibility:true;
+}
