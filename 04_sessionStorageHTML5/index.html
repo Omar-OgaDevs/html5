@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manejo de Local Storage HTML5</title>
+  <script src="js/libs/modernizr/modernizr-custom.js"></script>
+  <script src="js/libs/jquery/jquery-3.6.0.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+
+    $("#lista").blur(function(){
+      sessionStorage.setItem("listado", $("lista").html());
+      location.reload();
+    });
+
+    if (sessionStorage.getItem("listado")){
+      $("#mensaje").html("<h3>Datos alamacenados en Session Storage:</h3>");
+      $("#lista").html(sessionStorage.getItem("listado"));
+      $("#resultado").text(sessionStorage.getItem("listado"));
+    }
+    else{
+      $("#mensaje").text("No hay datos en Session Storage");
+    }
+
+    $("#limpiar").click(function(){
+      sessionStorage.removeItem("listado");
+      location.reload();
+    })
+
+  });
+  </script>
+</head>
+<body>
+  <h1>Manejo de Session Storage HTML5</h1>
+  <div>
+    <ul id="lista" contenteditable="true">
+    <li></li>
+    </ul>
+  </div>
+
+  <input type="button" id="limpiar" value="Limpiar"/>
+
+  <div id="mensaje"></div>
+  <div id="resultado"></div>
+
+</body>
+</html>
